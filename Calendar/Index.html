@@ -90,6 +90,7 @@
 
     <button id="previous">Move Previous</button>
     <button id="next">Move Next</button>
+    <input id="date"/><button id="setmonth">Set Month</button>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>    
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>
     <script src="/scripts/calendar.js"></script>
@@ -102,6 +103,10 @@
         $('#next').on('click', function () {
             bar.moveNext();
         });
+        $('#setmonth').on('click', function () {
+            bar.moveTo($('#date').val());
+        });
+
     </script>
 </body>
 </html>

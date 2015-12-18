@@ -4,15 +4,104 @@
     <title></title>
 	<meta charset="utf-8" />
     <link rel="Stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/redmond/jquery-ui.css" />
-    <link rel="Stylesheet" href="~/styles/calendar.css" />
+    <link rel="Stylesheet" href="/styles/calendar.css" />
 </head>
 <body>
+    <ol class="month">
+        <li class="header"></li>
+        <li>
+            <ol class="header">
+                <li class="weekend 0">Sunday</li>
+                <li class="weekday 1">Monday</li>
+                <li class="weekday 2">Tuesday</li>
+                <li class="weekday 3">Wednesday</li>
+                <li class="weekday 4">Thursday</li>
+                <li class="weekday 5">Friday</li>
+                <li class="weekend 6">Saturday</li>
+            </ol>
+        </li>
+        <li>
+            <ol class="week 0">
+                <li class="weekend 0"></li>
+                <li class="weekday 1"></li>
+                <li class="weekday 2"></li>
+                <li class="weekday 3"></li>
+                <li class="weekday 4"></li>
+                <li class="weekday 5"></li>
+                <li class="weekend 6"></li>
+            </ol>
+        </li>
+        <li>
+            <ol class="week 1">
+                <li class="weekend 0"></li>
+                <li class="weekday 1"></li>
+                <li class="weekday 2"></li>
+                <li class="weekday 3"></li>
+                <li class="weekday 4"></li>
+                <li class="weekday 5"></li>
+                <li class="weekend 6"></li>
+            </ol>
+        </li>
+        <li>
+            <ol class="week 2">
+                <li class="weekend 0"></li>
+                <li class="weekday 1"></li>
+                <li class="weekday 2"></li>
+                <li class="weekday 3"></li>
+                <li class="weekday 4"></li>
+                <li class="weekday 5"></li>
+                <li class="weekend 6"></li>
+            </ol>
+        </li>
+        <li>
+            <ol class="week 3">
+                <li class="weekend 0"></li>
+                <li class="weekday 1"></li>
+                <li class="weekday 2"></li>
+                <li class="weekday 3"></li>
+                <li class="weekday 4"></li>
+                <li class="weekday 5"></li>
+                <li class="weekend 6"></li>
+            </ol>
+        </li>
+        <li>
+            <ol class="week 4">
+                <li class="weekend 0"></li>
+                <li class="weekday 1"></li>
+                <li class="weekday 2"></li>
+                <li class="weekday 3"></li>
+                <li class="weekday 4"></li>
+                <li class="weekday 5"></li>
+                <li class="weekend 6"></li>
+            </ol>
+        </li>
+        <li>
+            <ol class="week 5">
+                <li class="weekend 0"></li>
+                <li class="weekday 1"></li>
+                <li class="weekday 2"></li>
+                <li class="weekday 3"></li>
+                <li class="weekday 4"></li>
+                <li class="weekday 5"></li>
+                <li class="weekend 6"></li>
+            </ol>
+        </li>
+    </ol>
 
+    <button id="previous">Move Previous</button>
+    <button id="next">Move Next</button>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>    
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="~/scripts/calendar.js"></script>
+    <script src="/scripts/calendar.js"></script>
     <script>
+        var bar = $.bisoyi.calendar({}, $(".month"));
 
+        $('#previous').on('click', function () {
+            bar.movePrevious();
+        });
+        $('#next').on('click', function () {
+            bar.moveNext();
+        });
     </script>
 </body>
 </html>

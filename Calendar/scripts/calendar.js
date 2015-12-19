@@ -12,7 +12,12 @@
             //the selected month might flow to 6th week
             //happens when a 30 day month starts on saturday or 31 day month starts on friday/saturday
             //dates stores 42 dates in an array
-            dates:[]
+            dates: [],
+            //array containing date indexed data points
+            //e.g. data:[{date:'2015-12-01',data:''},...]
+            data:[],
+            dateFormat: "",
+            dayTemplateId:""
         },
 
         _create: function () {
@@ -40,7 +45,7 @@
             //set the dates
             me.element.find('ol.week li').each(function (index) {
                 var currentDate = me.options.dates[index];
-                $(this).text(currentDate);
+                me._populateDayTemplate(this,currentDate);
                 //if current date does not belong to current month
                 if (currentMonth != currentDate.getMonth()) {
                     //if index is less than 7, that means currentDate is from previous month
@@ -64,6 +69,31 @@
 
             //refresh styles
             me._refreshStyle();
+        },
+
+        _populateDayTemplate: function (element,value) {
+            
+            //check if template specified
+            if (this.options.dayTemplateId && $("#"+this.options.dayTemplateId).length) {
+                //create the day html object using the template
+                var temp = $($("#" + this.options.dayTemplateId).html());
+                //fill the header
+                temp.find('span.header').text(this.options.dateFormat ? $.datepicker.formatDate(this.options.dateFormat, value) : value);
+
+                //fill body with supplied data
+                if (this.options.data) {
+                    var d = this.options.data.filter(this.getData, value)
+                    temp.find('div.content').text(d && d[0] ? d[0].data : "");
+                }
+                
+                $(element).empty().append(temp);
+            } else {
+                //if no date format specified, display native format
+                $(element).text(this.options.dateFormat ? $.datepicker.formatDate(this.options.dateFormat, value) : value);
+            }
+        },
+        getData: function (element, index, array) {
+            return element.date == $.datepicker.formatDate("yy-mm-dd", this);
         },
         _calculateMonthDates: function (month,year) {
             var dates = [];

@@ -1,112 +1,151 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+	<title></title>
 	<meta charset="utf-8" />
-    <link rel="Stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/redmond/jquery-ui.css" />
-    <link rel="Stylesheet" href="/styles/calendar.css" />
+	<link rel="Stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/redmond/jquery-ui.css" />
+	<link rel="Stylesheet" href="/styles/calendar.css" />
 </head>
 <body>
-    <ol class="month">
-        <li class="header"></li>
-        <li>
-            <ol class="header">
-                <li class="weekend 0">Sunday</li>
-                <li class="weekday 1">Monday</li>
-                <li class="weekday 2">Tuesday</li>
-                <li class="weekday 3">Wednesday</li>
-                <li class="weekday 4">Thursday</li>
-                <li class="weekday 5">Friday</li>
-                <li class="weekend 6">Saturday</li>
-            </ol>
-        </li>
-        <li>
-            <ol class="week 0">
-                <li class="weekend 0"></li>
-                <li class="weekday 1"></li>
-                <li class="weekday 2"></li>
-                <li class="weekday 3"></li>
-                <li class="weekday 4"></li>
-                <li class="weekday 5"></li>
-                <li class="weekend 6"></li>
-            </ol>
-        </li>
-        <li>
-            <ol class="week 1">
-                <li class="weekend 0"></li>
-                <li class="weekday 1"></li>
-                <li class="weekday 2"></li>
-                <li class="weekday 3"></li>
-                <li class="weekday 4"></li>
-                <li class="weekday 5"></li>
-                <li class="weekend 6"></li>
-            </ol>
-        </li>
-        <li>
-            <ol class="week 2">
-                <li class="weekend 0"></li>
-                <li class="weekday 1"></li>
-                <li class="weekday 2"></li>
-                <li class="weekday 3"></li>
-                <li class="weekday 4"></li>
-                <li class="weekday 5"></li>
-                <li class="weekend 6"></li>
-            </ol>
-        </li>
-        <li>
-            <ol class="week 3">
-                <li class="weekend 0"></li>
-                <li class="weekday 1"></li>
-                <li class="weekday 2"></li>
-                <li class="weekday 3"></li>
-                <li class="weekday 4"></li>
-                <li class="weekday 5"></li>
-                <li class="weekend 6"></li>
-            </ol>
-        </li>
-        <li>
-            <ol class="week 4">
-                <li class="weekend 0"></li>
-                <li class="weekday 1"></li>
-                <li class="weekday 2"></li>
-                <li class="weekday 3"></li>
-                <li class="weekday 4"></li>
-                <li class="weekday 5"></li>
-                <li class="weekend 6"></li>
-            </ol>
-        </li>
-        <li>
-            <ol class="week 5">
-                <li class="weekend 0"></li>
-                <li class="weekday 1"></li>
-                <li class="weekday 2"></li>
-                <li class="weekday 3"></li>
-                <li class="weekday 4"></li>
-                <li class="weekday 5"></li>
-                <li class="weekend 6"></li>
-            </ol>
-        </li>
-    </ol>
+	<ol class="month">
+		<li class="header"></li>
+		<li>
+			<ol class="header">
+				<li class="weekend 0">Sunday</li>
+				<li class="weekday 1">Monday</li>
+				<li class="weekday 2">Tuesday</li>
+				<li class="weekday 3">Wednesday</li>
+				<li class="weekday 4">Thursday</li>
+				<li class="weekday 5">Friday</li>
+				<li class="weekend 6">Saturday</li>
+			</ol>
+		</li>
+		<li>
+			<ol class="week 0">
+				<li class="weekend 0"></li>
+				<li class="weekday 1"></li>
+				<li class="weekday 2"></li>
+				<li class="weekday 3"></li>
+				<li class="weekday 4"></li>
+				<li class="weekday 5"></li>
+				<li class="weekend 6"></li>
+			</ol>
+		</li>
+		<li>
+			<ol class="week 1">
+				<li class="weekend 0"></li>
+				<li class="weekday 1"></li>
+				<li class="weekday 2"></li>
+				<li class="weekday 3"></li>
+				<li class="weekday 4"></li>
+				<li class="weekday 5"></li>
+				<li class="weekend 6"></li>
+			</ol>
+		</li>
+		<li>
+			<ol class="week 2">
+				<li class="weekend 0"></li>
+				<li class="weekday 1"></li>
+				<li class="weekday 2"></li>
+				<li class="weekday 3"></li>
+				<li class="weekday 4"></li>
+				<li class="weekday 5"></li>
+				<li class="weekend 6"></li>
+			</ol>
+		</li>
+		<li>
+			<ol class="week 3">
+				<li class="weekend 0"></li>
+				<li class="weekday 1"></li>
+				<li class="weekday 2"></li>
+				<li class="weekday 3"></li>
+				<li class="weekday 4"></li>
+				<li class="weekday 5"></li>
+				<li class="weekend 6"></li>
+			</ol>
+		</li>
+		<li>
+			<ol class="week 4">
+				<li class="weekend 0"></li>
+				<li class="weekday 1"></li>
+				<li class="weekday 2"></li>
+				<li class="weekday 3"></li>
+				<li class="weekday 4"></li>
+				<li class="weekday 5"></li>
+				<li class="weekend 6"></li>
+			</ol>
+		</li>
+		<li>
+			<ol class="week 5">
+				<li class="weekend 0"></li>
+				<li class="weekday 1"></li>
+				<li class="weekday 2"></li>
+				<li class="weekday 3"></li>
+				<li class="weekday 4"></li>
+				<li class="weekday 5"></li>
+				<li class="weekend 6"></li>
+			</ol>
+		</li>
+	</ol>
+	<script id="daytemplate" type="text/html">
+		<div class="day">
+			<span class="header"></span>
+			<div class="content"></div>
+		</div>
+	</script>
+	<button id="previous">Move Previous</button>
+	<button id="next">Move Next</button>
+	<input id="date"/><button id="setmonth">Set Month</button>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>    
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>	
+	<script src="/scripts/calendar.js"></script>
+	<script>
+		var data = [
+			{ date: "2015-12-01", data: "$123.00" },
+			{ date: "2015-12-02", data: "$123.00" },
+			{ date: "2015-12-03", data: "$123.00" },
+			{ date: "2015-12-04", data: "$123.00" },
+			{ date: "2015-12-05", data: "$123.00" },
+			{ date: "2015-12-06", data: "$123.00" },
+			{ date: "2015-12-07", data: "$123.00" },
+			{ date: "2015-12-08", data: "$123.00" },
+			{ date: "2015-12-09", data: "$123.00" },
+			{ date: "2015-12-10", data: "$123.00" },
+			{ date: "2015-12-11", data: "$123.00" },
+			{ date: "2015-12-12", data: "$123.00" },
+			{ date: "2015-12-13", data: "$123.00" },
+			{ date: "2015-12-14", data: "$123.00" },
+			{ date: "2015-12-15", data: "$123.00" },
+			{ date: "2015-12-16", data: "$123.00" },
+			{ date: "2015-12-17", data: "$123.00" },
+			{ date: "2015-12-18", data: "$123.00" },
+			{ date: "2015-12-19", data: "$123.00" },
+			{ date: "2015-12-20", data: "$123.00" },
+			{ date: "2015-12-21", data: "$123.00" },
+			{ date: "2015-12-22", data: "$123.00" },
+			{ date: "2015-12-23", data: "$123.00" },
+			{ date: "2015-12-24", data: "$123.00" },
+			{ date: "2015-12-25", data: "$123.00" },
+			{ date: "2015-12-26", data: "$123.00" },
+			{ date: "2015-12-27", data: "$123.00" },
+			{ date: "2015-12-28", data: "$123.00" },
+			{ date: "2015-12-29", data: "$123.00" },
+			{ date: "2015-12-30", data: "$123.00" },
+			{ date: "2015-12-31", data: "$123.00" },
+		];
 
-    <button id="previous">Move Previous</button>
-    <button id="next">Move Next</button>
-    <input id="date"/><button id="setmonth">Set Month</button>
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>    
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="/scripts/calendar.js"></script>
-    <script>
-        var bar = $.bisoyi.calendar({}, $(".month"));
+		var bar = $.bisoyi.calendar({ dateFormat: "dd", dayTemplateId: "daytemplate",data:data }, $(".month"));
 
-        $('#previous').on('click', function () {
-            bar.movePrevious();
-        });
-        $('#next').on('click', function () {
-            bar.moveNext();
-        });
-        $('#setmonth').on('click', function () {
-            bar.moveTo($('#date').val());
-        });
+		$('#previous').on('click', function () {
+			bar.movePrevious();
+		});
+		$('#next').on('click', function () {
+			bar.moveNext();
+		});
+		$('#setmonth').on('click', function () {
+			bar.moveTo($('#date').val());
+		});
 
-    </script>
+	</script>
 </body>
 </html>

@@ -1,3 +1,98 @@
 ﻿.doesnotbelongtomonth{
     display:none;
 }
+
+
+/*
+Default Horizontal week view
+*/
+.month
+{    
+    list-style:none;
+    display:inline-block;
+    margin: 0 auto;   
+    padding:0 5px 0 5px;
+    background-color:rgb(221, 221, 221);
+}
+
+.month > li.header{
+    text-align:center;
+    padding-bottom:10px;
+}
+
+.month ol.header,
+.week{
+    padding:0;
+}
+
+.week {
+    padding-bottom: 5px;
+}
+
+.header .weekday,
+.header .weekend,
+.week .weekend,
+.week .weekday {
+    display: inline-block;
+    width: 100px;
+    vertical-align:top;
+}
+    .week .weekend,
+    .week .weekday {
+        height: 100px;
+        background-color:rgba(170, 170, 170, 0.50);
+    }
+
+.header .weekday,
+.header .weekend{
+    text-align:center;
+    padding-bottom:10px;
+}
+.day{
+    
+}
+
+.weekend .content,
+.weekday .content{
+    
+}
+
+/*
+    Start: Vertical week view
+*/
+.month.vertical{
+    padding-top:5px;
+}
+.month.vertical > .header,
+.month.vertical > li{
+    vertical-align:top;
+    text-align:left;
+}
+.month.vertical > li {
+    display:inline-block;
+}
+
+.month.vertical .weekend,
+.month.vertical .weekday{
+    display:block;
+    padding-bottom:5px;
+}
+
+.month.vertical .header .weekday,
+.month.vertical .header .weekend{
+    height:100px;
+    text-align:left;
+}
+.month.vertical .week,
+.month.vertical .week{
+    padding-bottom:0;
+}
+.month.vertical .week .weekend,
+.month.vertical .week .weekday {
+        padding-bottom:0;
+        margin-bottom:5px;
+    }
+
+/*
+    End: Vertical week view
+*/

@@ -17,7 +17,10 @@
             //e.g. data:[{date:'2015-12-01',data:''},...]
             data:[],
             dateFormat: "",
-            dayTemplateId:""
+            dayTemplateId: "",
+
+            //default week view is horizontal(most scenarios)
+            vertical: false
         },
 
         _create: function () {
@@ -26,8 +29,10 @@
 
             //this.element.addClass("calendar");
             //this.options.dates = this._calculateMonthDates(this.options.today.getMonth(), this.options.today.getFullYear());
+            if (this.options.vertical) {
+                this.element.addClass("vertical");
+            }
             this.refresh();
-
         },
         refresh: function () {
             var me = this;

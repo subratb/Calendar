@@ -42,7 +42,12 @@ Default Horizontal week view
         height: 100px;
         background-color:rgba(170, 170, 170, 0.50);
     }
-
+        .week .weekend.previousmonth,
+        .week .weekend.nextmonth,
+        .week .weekday.previousmonth,
+        .week .weekday.nextmonth {
+            background-color: rgba(170, 170, 170, 0.30);
+        }
 .header .weekday,
 .header .weekend{
     text-align:center;
@@ -71,7 +76,9 @@ Default Horizontal week view
 .month.vertical > li {
     display:inline-block;
 }
-
+.month.vertical > li.doesnotbelongtomonth{
+    display:none;
+}
 .month.vertical .weekend,
 .month.vertical .weekday{
     display:block;

@@ -92,7 +92,7 @@
 			<span class="header"></span>
 			<div class="content"></div>
 		</div>
-	</script>
+	</script>	
 	<br/>
 	<button id="previous">Move Previous</button>
 	<button id="next">Move Next</button>
@@ -135,7 +135,14 @@
 			{ date: "2015-12-31", data: "$123.00" },
 		];
 
-		var bar = $.bisoyi.calendar({ dateFormat: "dd", dayTemplateId: "daytemplate",data:data }, $(".month"));
+		var bar = $.bisoyi.calendar({
+			dateFormat: "dd",
+			dayTemplateId: "daytemplate",
+			data: data,
+			actions: [
+			{ name: 'addbill', title: 'Add Bill', action: function (date) { alert('add bill '+date); } },
+			{ name: 'allbill', title: 'All Bills', action: function (date) { alert('show bills '+date); } }]
+		}, $(".month"));
 
 		$('#previous').on('click', function () {
 			bar.movePrevious();

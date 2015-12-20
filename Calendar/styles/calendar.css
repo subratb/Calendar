@@ -1,7 +1,12 @@
 ﻿.doesnotbelongtomonth{
     display:none;
 }
-
+.calendarmenu{
+    display:none;
+    width:100px;
+    height:100px;
+    background-color:rgba(221, 221, 255,1);
+}
 
 /*
 Default Horizontal week view

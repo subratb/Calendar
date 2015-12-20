@@ -20,11 +20,15 @@
             dayTemplateId: "",
 
             //default week view is horizontal(most scenarios)
-            vertical: false
+            vertical: false,
+
+            //actions for calendar
+            actions:[]
         },
 
         _create: function () {
 
+            var me = this;
             //this.options.value = this._constrain(this.options.value);
 
             //this.element.addClass("calendar");
@@ -32,6 +36,27 @@
             if (this.options.vertical) {
                 this.element.addClass("vertical");
             }
+
+            //add event handlers for previousmonth and nextmonth dates
+            $('body').on('click','.previousmonth', function () { me.movePrevious(); });
+            $('body').on('click', '.nextmonth', function () { me.moveNext(); });
+
+            //if there are actions specified
+            //add event handlers for month dates
+            //set the data for the calendarmenu
+            //set the position where calendarmenu would be shown
+            if (me.options.actions && me.options.actions.length) {
+                $('body').on('mouseover', ".weekday:not('.previousmonth,.nextmonth'),.weekend:not('.previousmonth,.nextmonth')",
+                    function () {
+                        $(".calendarmenu")
+                            .data('date', $(event.target).data('date'))
+                            .position({ my: "left top", at: "left top", of: event.target })
+                            .show("fold", "linear", 1000);
+                    });
+            }
+            //create action menu
+            me._createActions();
+
             this.refresh();
         },
         refresh: function () {
@@ -50,6 +75,7 @@
             //set the dates
             me.element.find('ol.week li').each(function (index) {
                 var currentDate = me.options.dates[index];
+                $(this).data('date',$.datepicker.formatDate('yy-mm-dd', currentDate));
                 me._populateDayTemplate(this,currentDate);
                 //if current date does not belong to current month
                 if (currentMonth != currentDate.getMonth()) {
@@ -95,6 +121,30 @@
             } else {
                 //if no date format specified, display native format
                 $(element).text(this.options.dateFormat ? $.datepicker.formatDate(this.options.dateFormat, value) : value);
+            }
+        },
+        _createActions: function () {
+            //if there are actions specified
+            if (this.options.actions && this.options.actions.length) {
+
+                //create the calendar menu
+                var actionElement = $('<div class="calendarmenu"></div>');
+
+                //for each action specified in this.options.actions                
+                this.options.actions.forEach(function (element, index, array) {
+
+                    //add the action to the calendar menu
+                    //add a class with the action name supplied
+                    actionElement.append($('<div class="action ' + element.name + '">' + element.title + '</div>'));
+
+                    //add event handler using action and action name as selectors
+                    //retrieve the date stored on the calendar menu
+                    //pass the data retrieved to the action
+                    $('body').on('click', '.action.' + element.name, function () { element.action(actionElement.data('date')); });
+                });
+
+                //append the menu to the body
+                $('body').append(actionElement);
             }
         },
         getData: function (element, index, array) {

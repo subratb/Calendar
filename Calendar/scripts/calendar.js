@@ -46,7 +46,7 @@
             //set the data for the calendarmenu
             //set the position where calendarmenu would be shown
             if (me.options.actions && me.options.actions.length) {
-                $('body').on('mouseover', ".weekday:not('.previousmonth,.nextmonth'),.weekend:not('.previousmonth,.nextmonth')",
+                $('body').on('mouseover', ".week .weekday:not('.previousmonth,.nextmonth'),.week .weekend:not('.previousmonth,.nextmonth')",
                     function () {
                         $(".calendarmenu")
                             .data('date', $(event.target).data('date'))
@@ -56,6 +56,11 @@
             }
             //create action menu
             me._createActions();
+
+            //when user click on a date, make it selected date
+            $('body').on('click', '.calendarmenu, .weekday, .weekend', function () {
+                me._setOption('selectedDate', $(this).data('date'));                
+            });
 
             this.refresh();
         },
@@ -87,6 +92,12 @@
                     if (index >= 28) {
                         $(this).addClass('nextmonth');
                     }
+                }
+
+                //if current date is selected date
+                if (currentDate.getDate() == me.options.selectedDate.getDate()) {
+                    me.element.find('.selecteddate').removeClass('selecteddate');
+                    $(this).addClass('selecteddate');
                 }
                 
             });
@@ -167,27 +178,7 @@
         },
         _refreshStyle: function () {
 
-        },
-        _setOption: function (key, value) {
-
-            if (key === "selectedDate") {
-                
-                //check if the date is a valid date
-                try {
-                    value = $.datepicker.parseDate('yy-mm-dd', value);
-                    this._super(key, value);
-                    this.refresh();
-                } catch (e) {
-                    console.warn(e);
-                }
-            }
-
-            
-        },
-        _setOptions: function (options) {
-            this._super(options);
-            this.refresh();
-        },
+        },        
         _checkIfWeekBelongsToSelectedMonth:function(index){
             //get the set of 7 dates for the given week(index)
             //check if any one date belongs to the selected month
@@ -219,6 +210,42 @@
         },
         moveTo: function (value) {
             this._setOption('selectedDate', value);
+        },
+        _setOption: function (key, value) {
+
+            if (key === "selectedDate") {
+
+                //check if the date is a valid date
+                try {
+                    value = $.datepicker.parseDate('yy-mm-dd', value);
+                    this._super(key, value);
+                    //refresh when year or month has changed
+                    //no need to refresh if a date in the same month has been selected
+                    if (value.getYear() != this.options.selectedDate.getYear() || value.getMonth() != this.options.selectedDate.getMonth()) {
+                        this.refresh();
+                    } else {
+                        //update the selected date's appearance
+                        //remove the currently selected date
+                        this.element.find('.selecteddate').removeClass('selecteddate');
+                        //find the li to which the current date belongs
+                        //index of li is one less than the date value of selected date
+                        //make that li selected
+                        $(this.element.find('ol.week li').not('.previousmonth,.nextmonth')[value.getDate()-1]).addClass('selecteddate');
+                    }
+                } catch (e) {
+                    console.warn(e);
+                }
+            }
+
+
+        },
+        _setOptions: function (options) {
+            this._super(options);
+            //refresh when year or month has changed
+            //no need to refresh if a date in the same month has been selected
+            if (options && options.selectedDate && (options.selectedDate.getYear() != this.options.selectedDate.getYear() || options.selectedDate.getMonth() != this.options.selectedDate.getMonth())) {
+                this.refresh();
+            }
         }
     });
 }(jQuery));

@@ -47,6 +47,10 @@ Default Horizontal week view
         height: 100px;
         background-color:rgba(170, 170, 170, 0.50);
     }
+        .week .weekend.selecteddate,
+        .week .weekday.selecteddate {
+            background-color: rgba(170, 170, 170, 1);
+        }
         .week .weekend.previousmonth,
         .week .weekend.nextmonth,
         .week .weekday.previousmonth,
